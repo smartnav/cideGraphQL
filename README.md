@@ -1,12 +1,35 @@
 # CIDE-BE-JUNE-2019
 This is the new backend of CIDE
 
-# POSTMAN collection link
-https://www.getpostman.com/collections/2d2e25f51bd53f8a75bd
+## Graphql link 
+
+http://localhost:4000/graphql
+
+
+## Installation
 
 
 
-For add data in school
+```bash
+npm install
+npm start
+```
+## Database
+Mongodb database and odm mongoose
+
+## Requirements
+nodejs 8+ 
+
+npm 6+
+
+mongodb 3+
+
+
+
+
+
+## Examples input
+#### For School
 
 ```mutation {
   createSchool(dataInput : {

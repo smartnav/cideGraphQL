@@ -402,11 +402,28 @@ const cycle = gql`
         getSchools : [School]
     }
 
-    
+    input cycleUpdate {
+        _id : ID!
+        name : String!
+        subCycles : [subCyclesInput]
+    }
+
+    input SchoolUpdate {
+        _id : ID
+        etablissement : etablissement!
+        cycles : [cyclesdata]
+        boardingSchool : boardingSchool
+        agenda : agenda
+    } 
+
     
     type Mutation {
         createCycle(dataInput : cycleInput): Cycle
+        deleteCycle(_id : ID!) : String 
+        updateCycle(dataInput : cycleUpdate) : Cycle
         createSchool(dataInput : schoolInput) : School
+        deleteSchool(_id : ID!) : String 
+        updateSchool(dataInput : SchoolUpdate) : School
     }`
 
     module.exports = cycle;
