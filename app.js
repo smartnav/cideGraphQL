@@ -6,22 +6,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var db = require('./app/config/database').db;
-const { ApolloServer, gql } = require('apollo-server-express');
+const { ApolloServer } = require('apollo-server-express');
+const typeDefs = require('./graphql/typeDefs/cycle');
+const resolvers = require('./graphql/resolvers/cycle');
 
 var app = express();
-const typeDefs = require('./graphql/typeDefs');
-// const typeDefs = gql`
-  
-// type Query {
-//   hello1: String
-// }
 
-// schema {
-//   query: Query
-// }
-// `;
-const resolvers = require('./graphql/resolvers');
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -47,6 +37,9 @@ const server = new ApolloServer({
   // These will be defined for both new or existing servers
   typeDefs,
   resolvers,
+  formatError: (err) => {    // Don't give the specific errors to the client.    if (err.message.startsWith("Database Error: ")) {      return new Error('Internal server error');    }        // Otherwise return the original error.  The error can also    // be manipulated in other ways, so long as it's returned.
+    return err;
+  },
 });
 
 server.applyMiddleware({ app });

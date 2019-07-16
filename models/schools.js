@@ -67,6 +67,21 @@
         "secondaryImages": [{}]
  }
 
+ var inShort  = {
+       "boardingSchoolYesNo": {type : Boolean, default: false},
+       "boardingSchoolDesc": {type : String, default: ""},
+       "scolarshipYesNo": {type : Boolean, default: false},
+       "scolarshipDesc": {type : String, default: ""},
+       "cateringYesNo": {type : Boolean, default: false},
+       "cateringDesc": {type : String, default: ""},
+       "trainingProgramYesNo": {type : Boolean, default: false},
+       "trainingProgramDesc": {type : String, default: ""},
+       "lv1": {type : String, default: ""},
+       "lv2": {type : String, default: ""},
+       "lv3": {type : String, default: ""},
+       "lv4": {type : String, default: ""}
+}
+
 
 
  var schoolSchema = new Schema({
@@ -84,6 +99,7 @@
         address,
         contacts,
         internal,
+        inShort,
         specificities : {},
         subCycles : []
   }],

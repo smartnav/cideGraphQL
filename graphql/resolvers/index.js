@@ -1,5 +1,3 @@
-import cycle from './cycle';
-
-export default [
-    cycle
-]
+module.exports = {
+    cycles : require('./cycle'),
+}
